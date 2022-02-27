@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&display=swap");
+@font-face {
+    font-family: "Impact";
+    src: url("./assets/Impact.ttf") format("truetype");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

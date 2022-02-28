@@ -1,4 +1,4 @@
-import memeSvg from "../assets/meme.svg";
+import memeSvg from "../assets/troll.svg";
 
 const Navbar = () => {
   return (

@@ -1,33 +1,38 @@
 import memeImg from "../assets/meme.png";
+import memesData from "../memesData";
 
-const Main = () => {
+const getMemeImage = (): void => {
+  const memesArray = memesData.data.memes;
+  const randomNumber = Math.floor(Math.random() * memesArray.length);
+  const url = memesArray[randomNumber].url;
+
+  console.log(url);
+};
+
+const Main = () => { 
   return (
     <>
-      <form action="" method="" className="flex justify-center gap-4 mt-10">
+      <div className="form flex justify-center gap-4 mt-10">
         <input
           type="text"
-          className="setup rounded-[4px] border-[1px] border-[#B0B0B0] p-2 min-w-[230px]"
+          placeholder="Top text"
+          className="setup rounded-[4px] border-[1px] border-[#B0B0B0] py-2 indent-2 min-w-[230px]"
         />
         <input
           type="text"
-          className="punchline rounded-[4px] border-[1px] border-[#B0B0B0] p-2 min-w-[230px]"
+          placeholder="Bottom text"
+          className="punchline rounded-[4px] border-[1px] border-[#B0B0B0] py-2 indent-2 min-w-[230px]"
         />
-      </form>
+      </div>
       <main className="flex justify-center mt-5">
-        <div className="flex flex-col gap-10">
-          <div
-            className="img flex flex-col justify-between p-4 text-center text-[32px] rounded-[4px] min-h-[268px] font-impact text-white"
-            style={{ backgroundImage: `url(${memeImg})` }}
-          >
-            <p>SHUT UP</p>
-            <p>AND TAKE MY MONEY</p>
-          </div>
-          <a
-            href="/"
-            className="bg-button w-[477px] flex justify-center rounded-[4px] py-2 font-bold"
+        <div className="flex flex-col gap-10 w-[477px]">
+          <img className="w-full rounded-[4px]" src={memeImg} alt="" />
+          <button
+            className="bg-button w-full flex justify-center rounded-[4px] py-2 font-bold"
+            onClick={getMemeImage}
           >
             Get a new meme image
-          </a>
+          </button>
         </div>
       </main>
     </>

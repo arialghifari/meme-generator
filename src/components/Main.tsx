@@ -1,18 +1,20 @@
-import memeImg from "../assets/meme.png";
+import React from "react";
 import memesData from "../memesData";
 
-const getMemeImage = (): void => {
-  const memesArray = memesData.data.memes;
-  const randomNumber = Math.floor(Math.random() * memesArray.length);
-  const url = memesArray[randomNumber].url;
+const Main = () => {
+  const [memeImage, setMemeImage] = React.useState("src/assets/meme.png");
 
-  console.log(url);
-};
+  const getMemeImage = (): void => {
+    const memesArray = memesData.data.memes;
+    const randomNumber = Math.floor(Math.random() * memesArray.length);
+    const url = memesArray[randomNumber].url;
 
-const Main = () => { 
+    return setMemeImage(url);
+  };
+
   return (
-    <>
-      <div className="form flex justify-center gap-4 mt-10">
+    <main className="flex flex-col justify-center items-center my-10 px-4">
+      <div className="form flex flex-row justify-center gap-4 sm:flex-col w-full">
         <input
           type="text"
           placeholder="Top text"
@@ -24,18 +26,16 @@ const Main = () => {
           className="punchline rounded-[4px] border-[1px] border-[#B0B0B0] py-2 indent-2 min-w-[230px]"
         />
       </div>
-      <main className="flex justify-center mt-5">
-        <div className="flex flex-col gap-10 w-[477px]">
-          <img className="w-full rounded-[4px]" src={memeImg} alt="" />
-          <button
-            className="bg-button w-full flex justify-center rounded-[4px] py-2 font-bold"
-            onClick={getMemeImage}
-          >
-            Get a new meme image
-          </button>
-        </div>
-      </main>
-    </>
+      <div className="flex flex-col items-center gap-5 mt-5 w-[477px] sm:w-full">
+        <button
+          className="bg-button w-full flex justify-center rounded-[4px] py-2 font-bold"
+          onClick={getMemeImage}
+        >
+          Get a new meme image
+        </button>
+        <img className="rounded-[4px] bg-cover w-full" src={memeImage} alt="" />
+      </div>
+    </main>
   );
 };
 

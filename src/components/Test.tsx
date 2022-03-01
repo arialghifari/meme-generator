@@ -1,26 +1,25 @@
 import React from "react";
 
 const Test = () => {
-  const [things, setThings] = React.useState(["Thing 1", "Thing 2"]);
+  let [count, setCount] = React.useState(0);
 
-  const addThings = () => {
-    const nextThing = `Thing ${things.length + 1}`;
-    setThings((prevState) => [...prevState, nextThing]);
+  const add = () => {
+    setCount((prevCount) => prevCount + 1);
   };
 
-  const elThings = things.map((item) => {
-    return <p key={item}>{item}</p>;
-  });
+  const sub = () => {
+    setCount((prevCount) => prevCount - 1);
+  };
 
   return (
-    <div className="flex flex-col justify-center mt-5 p-16">
-      <button
-        className="bg-red-400 text-white rounded-lg p-2"
-        onClick={addThings}
-      >
-        Add Item
+    <div className="flex flex-col gap-5 justify-center mt-5 p-16 text-center">
+      <h1>{count}</h1>
+      <button className="bg-blue-400 text-white rounded-lg p-2" onClick={add}>
+        +
       </button>
-      {elThings}
+      <button className="bg-blue-400 text-white rounded-lg p-2" onClick={sub}>
+        -
+      </button>
     </div>
   );
 };

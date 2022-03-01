@@ -9,7 +9,13 @@ const Main = () => {
     const randomNumber = Math.floor(Math.random() * memesArray.length);
     const url = memesArray[randomNumber].url;
 
-    return setMemeImage(url);
+    setMemeImage(url);
+  };
+
+  const [isGoingOut, setIsGoingOut] = React.useState(true);
+
+  const changeMind = () => {
+    setIsGoingOut((prevState): boolean => !prevState);
   };
 
   return (
@@ -35,6 +41,14 @@ const Main = () => {
         </button>
         <img className="rounded-[4px] bg-cover w-full" src={memeImage} alt="" />
       </div>
+
+      <p className="mt-5">Do I feel like going out tonight?</p>
+      <button
+        className="bg-green-600 py-2 px-6 text-white rounded-lg"
+        onClick={changeMind}
+      >
+        {isGoingOut ? "Yes" : "No"}
+      </button>
     </main>
   );
 };

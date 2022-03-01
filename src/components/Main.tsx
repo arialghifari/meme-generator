@@ -9,14 +9,20 @@ const Main = () => {
     const randomNumber = Math.floor(Math.random() * memesArray.length);
     const url = memesArray[randomNumber].url;
 
-    setMemeImage(url);
+    setMemeImage(url); 
   };
 
-  const [isGoingOut, setIsGoingOut] = React.useState(true);
+  const [items, setItems] = React.useState(["Thing 1", "Thing 2", "Thing 3"]);
 
-  const changeMind = () => {
-    setIsGoingOut((prevState): boolean => !prevState);
+  const addItems = () => {
+    setItems((prevState) => {
+      return [...prevState, `Thing ${prevState.length + 1}`];
+    });
   };
+
+  const elementItems = items.map((el) => {
+    return <p key={el}>{el}</p>;
+  });
 
   return (
     <main className="flex flex-col justify-center items-center my-10 px-4">
@@ -42,13 +48,13 @@ const Main = () => {
         <img className="rounded-[4px] bg-cover w-full" src={memeImage} alt="" />
       </div>
 
-      <p className="mt-5">Do I feel like going out tonight?</p>
       <button
-        className="bg-green-600 py-2 px-6 text-white rounded-lg"
-        onClick={changeMind}
+        className="bg-green-600 py-2 px-6 text-white rounded-lg mt-5"
+        onClick={addItems}
       >
-        {isGoingOut ? "Yes" : "No"}
+        Add Item
       </button>
+      {elementItems}
     </main>
   );
 };

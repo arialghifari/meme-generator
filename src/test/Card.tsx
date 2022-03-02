@@ -27,9 +27,11 @@ const Card = () => {
         alt=""
       />
       <Star isFilled={contact.isFavorite} handleClick={toggleFavorite} />
-      <h2 className="text-2xl">John Doe</h2>
-      <p>120938012938</p>
-      <p>awdia@awdioawmd.com</p>
+      <h2 className="text-2xl">
+        {contact.firstName} {contact.lastName}
+      </h2>
+      <p>{contact.phone}</p>
+      <p>{contact.email}</p>
     </div>
   );
 };

@@ -7,7 +7,9 @@ import Body from "./test/Body";
 import React from "react";
 import boxesData from "./test/boxes";
 import Box from "./test/Box";
-
+import memesData from "./test/memesData";
+import Meme from "./test/Meme";
+import Messages from "./test/Messages";
 
 function App() {
   const [user, setUser] = React.useState("Ari");
@@ -52,11 +54,18 @@ function App() {
     return <Box key={box.id} on={box.on} handleClick={() => toggle(box.id)} />;
   });
 
+  // Meme (setup - punchline)
+  const memeElements = memesData.map((meme) => {
+    return <Meme key={meme.id} setup={meme.setup} punchline={meme.punchline} />;
+  });
+
   return (
     <>
       <Navbar />
       <Main />
-      <div className="flex gap-5 justify-center mb-10">{boxElements}</div>
+      <Messages />
+      {memeElements}
+      <div className="flex gap-5 justify-center my-10">{boxElements}</div>
       <div className="text-center">
         <Header username={user} />
         <Body username={user} />

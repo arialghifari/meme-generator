@@ -10,6 +10,7 @@ import Box from "./test/Box";
 import memesData from "./test/memesData";
 import Meme from "./test/Meme";
 import Messages from "./test/Messages";
+import Form from "./test/form/Form";
 
 function App() {
   const [user, setUser] = React.useState("Ari");
@@ -61,7 +62,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <Main />
       <Messages />
       {memeElements}
@@ -71,7 +72,8 @@ function App() {
         <Body username={user} />
       </div>
       <Count />
-      <Card />
+      <Card /> */}
+      <Form />
     </>
   );
 }

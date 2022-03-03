@@ -24,6 +24,7 @@ const Form = () => {
           name="firstName"
           placeholder="First Name"
           className="border border-black p-2"
+          value={formData.firstName}
           onChange={handleChange}
         />
         <input
@@ -31,6 +32,7 @@ const Form = () => {
           name="lastName"
           placeholder="Last Name"
           className="border border-black p-2"
+          value={formData.lastName}
           onChange={handleChange}
         />
         <input
@@ -38,6 +40,7 @@ const Form = () => {
           name="email"
           placeholder="Email"
           className="border border-black p-2"
+          value={formData.email}
           onChange={handleChange}
         />
       </div>

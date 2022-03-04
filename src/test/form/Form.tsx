@@ -5,49 +5,118 @@ const Form = () => {
     firstName: "",
     lastName: "",
     email: "",
+    comments: "",
+    isFriendly: false,
+    employment: "",
   });
 
   const handleChange = (e: any) => {
+    const { name, value, type, checked } = e.target;
+
     setFormData((prevFormData) => {
+      console.log(e);
+
       return {
         ...prevFormData,
-        [e.target.name]: e.target.value,
+        [name]: type === "checkbox" ? checked : value,
       };
     });
   };
 
+  console.log(formData);
+
   return (
     <div className="mx-auto w-fit mt-10">
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-2">
         <input
           type="text"
           name="firstName"
           placeholder="First Name"
-          className="border border-black p-2"
+          className="input"
           value={formData.firstName}
           onChange={handleChange}
         />
+
         <input
           type="text"
           name="lastName"
           placeholder="Last Name"
-          className="border border-black p-2"
+          className="input"
           value={formData.lastName}
           onChange={handleChange}
         />
+
         <input
           type="text"
           name="email"
           placeholder="Email"
-          className="border border-black p-2"
+          className="input"
           value={formData.email}
           onChange={handleChange}
         />
-      </div>
-      <div className="mt-5 font-semibold">
-        <p>First Name: {formData.firstName}</p>
-        <p>Last Name: {formData.lastName}</p>
-        <p>Email: {formData.email}</p>
+
+        <textarea
+          name="comments"
+          className="input"
+          placeholder="Comments"
+          value={formData.comments}
+          onChange={handleChange}
+        />
+
+        <div className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            id="is-friendly"
+            name="isFriendly"
+            checked={formData.isFriendly}
+            onChange={handleChange}
+          />
+          <label htmlFor="is-friendly">Are you friendly?</label>
+        </div>
+
+        <fieldset className="input flex flex-col">
+          <legend>Current employment status</legend>
+
+          <div>
+            <input
+              name="employment"
+              type="radio"
+              id="unemployed"
+              value="unemployed"
+              onChange={handleChange}
+              checked={formData.employment === "unemployed"}
+            />
+            <label htmlFor="unemployed" className="ml-2">
+              Unemployed
+            </label>
+          </div>
+          <div>
+            <input
+              name="employment"
+              type="radio"
+              id="part-time"
+              value="part-time"
+              onChange={handleChange}
+              checked={formData.employment === "part-time"}
+            />
+            <label htmlFor="part-time" className="ml-2">
+              Part-time
+            </label>
+          </div>
+          <div>
+            <input
+              name="employment"
+              type="radio"
+              id="full-time"
+              value="full-time"
+              onChange={handleChange}
+              checked={formData.employment === "full-time"}
+            />
+            <label htmlFor="full-time" className="ml-2">
+              Full-time
+            </label>
+          </div>
+        </fieldset>
       </div>
     </div>
   );

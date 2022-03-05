@@ -11,6 +11,7 @@ import memesData from "./test/memesData";
 import Meme from "./test/Meme";
 import Messages from "./test/Messages";
 import Form from "./test/form/Form";
+import FormSubscription from "./test/form/FormSubscription";
 
 function App() {
   const [user, setUser] = React.useState("Ari");
@@ -73,7 +74,8 @@ function App() {
       </div>
       <Count />
       <Card /> */}
-      <Form />
+      {/* <Form /> */}
+      <FormSubscription />
     </>
   );
 }

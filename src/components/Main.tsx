@@ -61,16 +61,16 @@ const Main = () => {
         >
           Get a new meme image
         </button>
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <img
             className="rounded-[4px] bg-cover w-full"
             src={meme.randomImage}
             alt=""
           />
-          <p className="meme-text absolute top-0 text-white text-3xl w-full text-center my-2">
+          <p className="meme-text absolute top-0 text-white text-3xl w-full text-center p-2">
             {meme.topText}
           </p>
-          <p className="meme-text absolute bottom-0 text-white text-3xl w-full text-center my-2">
+          <p className="meme-text absolute bottom-0 text-white text-3xl w-full text-center p-2">
             {meme.bottomText}
           </p>
         </div>

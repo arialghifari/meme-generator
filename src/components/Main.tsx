@@ -10,44 +10,70 @@ const Main = () => {
 
   const [allMemeImages, setAllMemeImage] = React.useState(memesData.data.memes);
 
-  const getMemeImage = () => {
+  const handleChangeImage = () => {
     const randomNumber = Math.floor(Math.random() * allMemeImages.length);
-    const url = allMemeImages[randomNumber].url;
+    const memeUrl = allMemeImages[randomNumber].url;
 
     setMeme((prevMeme) => {
       return {
         ...prevMeme,
-        randomImage: url,
+        randomImage: memeUrl,
+      };
+    });
+  };
+
+  const handleForm = (e: any) => {
+    const { name, value } = e.target;
+
+    setMeme((prevMeme) => {
+      return {
+        ...prevMeme,
+        [name]: value,
       };
     });
   };
 
   return (
     <main className="flex flex-col justify-center items-center my-10 px-4">
-      <div className="form flex flex-row justify-center gap-4 sm:flex-col w-full">
+      <div className="form flex flex-row justify-center gap-4 w-[477px] sm:flex-col sm:w-full">
         <input
           type="text"
           placeholder="Top text"
-          className="setup rounded-[4px] border-[1px] border-[#B0B0B0] py-2 indent-2 min-w-[230px]"
+          className="setup input"
+          onChange={handleForm}
+          name="topText"
+          value={meme.topText}
         />
         <input
           type="text"
           placeholder="Bottom text"
-          className="punchline rounded-[4px] border-[1px] border-[#B0B0B0] py-2 indent-2 min-w-[230px]"
+          className="punchline input"
+          onChange={handleForm}
+          name="bottomText"
+          value={meme.bottomText}
         />
       </div>
       <div className="flex flex-col items-center gap-5 mt-5 w-[477px] sm:w-full">
         <button
           className="bg-button w-full flex justify-center rounded-[4px] py-2 font-bold"
-          onClick={getMemeImage}
+          onClick={handleChangeImage}
+          name="changeImage"
         >
           Get a new meme image
         </button>
-        <img
-          className="rounded-[4px] bg-cover w-full"
-          src={meme.randomImage}
-          alt=""
-        />
+        <div className="relative">
+          <img
+            className="rounded-[4px] bg-cover w-full"
+            src={meme.randomImage}
+            alt=""
+          />
+          <p className="meme-text absolute top-0 text-white text-3xl w-full text-center my-2">
+            {meme.topText}
+          </p>
+          <p className="meme-text absolute bottom-0 text-white text-3xl w-full text-center my-2">
+            {meme.bottomText}
+          </p>
+        </div>
       </div>
     </main>
   );

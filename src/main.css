@@ -10,6 +10,11 @@
 
 @layer components {
   .input {
-    @apply border border-black p-2;
+    @apply border border-[#B0B0B0] rounded-[4px] py-2 indent-2 w-full;
   }
+}
+
+.meme-text {
+  -webkit-text-stroke: 1.5px black;
+  font-family: impact;
 }

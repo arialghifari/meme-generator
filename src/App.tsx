@@ -5,9 +5,8 @@ import TestApi from "./api/TestApi";
 function App() {
   return (
     <>
-      {/* <Navbar />
-      <Main /> */}
-      <TestApi />
+      <Navbar />
+      <Main />
     </>
   );
 }

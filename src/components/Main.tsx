@@ -7,7 +7,7 @@ const Main = () => {
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
 
-  const [allMemes, setAllMemes] = React.useState([]);
+  const [allMemes, setAllMemes] = React.useState<any>([]);
   console.log("COMPONENTS");
 
   React.useEffect(() => {
@@ -20,12 +20,12 @@ const Main = () => {
 
   const handleChangeImage = () => {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
-    const memeUrl = allMemes[randomNumber].url;
+    const memeImgUrl = allMemes[randomNumber].url;
 
     setMeme((prevMeme) => {
       return {
         ...prevMeme,
-        randomImage: memeUrl,
+        randomImage: memeImgUrl,
       };
     });
   };

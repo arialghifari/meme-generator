@@ -18,7 +18,7 @@ const App = () => {
       >
         Toggle WindowTracker
       </button>
-      {show ? <WindowTracker /> : undefined}
+      {show && <WindowTracker />}
     </div>
   );
 };
